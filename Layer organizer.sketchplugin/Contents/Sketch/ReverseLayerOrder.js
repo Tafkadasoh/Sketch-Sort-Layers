@@ -7,30 +7,30 @@ var leftPositions = [];
 var topPositions = [];
 var layersMeta = [];
 
-// Run
-if (selection.count() > 1) {
+function run(context) {
+	if (selection.count() > 1) {
 
-    // remember the selection
-    _selection = selection;
+	    // remember the selection
+	    _selection = selection;
 
-    // sort selected layers
-    sortLayers(selection);
-} else if (selection.count() == 1 && selection[0].children().count() > 0){
+	    // sort selected layers
+	    sortLayers(selection);
+	} else if (selection.count() == 1 && selection[0].children().count() > 0){
 
-    // remember the selection
-    _selection = selection;
+	    // remember the selection
+	    _selection = selection;
 
-    var group = _selection[0];
-    // sort selected group
-    sortLayers(group.layers().array());
-} else {
-    [doc showMessage:"Cannot sort single layers."]
+	    var group = _selection[0];
+	    // sort selected group
+	    sortLayers(group.layers().array());
+	} else {
+	    [doc showMessage:"Cannot sort single layers."]
+	}
+
+	// Main
+	inventory.layers.reverseLayerOrder(layersMeta);
+	inventory.layers.select(_selection);
 }
-
-// Main
-inventory.layers.reverseLayerOrder(layersMeta);
-inventory.layers.select(_selection);
-
 
 // Sorting
 function sortLayers (layers) {

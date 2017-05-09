@@ -1,0 +1,43 @@
+{
+	"name": "Layer organizer",
+	"description": "Layer organization like sorting or reversing",
+	"author": "Florian Schulz",
+	"homepage": "https://github.com/getflourish/Sketch-Sort-Layers",
+	"version": 1.0,
+
+	"identifier": "com.getflourish.sketch.layerOrganizer",
+	"updateURL": "http://raw.github.com/getflourish/Sketch-Sort-Layers/manifest.json",
+	"compatibleVersion": 3,
+	"bundleVersion": 1,
+
+	"commands": [
+			{
+				"name": "Sort layers",
+				"identifier": "sortLayers",
+				"shortcut": "cmd ctrl alt s",
+				"script": "SortLayers.js",
+				"handler": "run"
+			},
+			{
+				"name": "Reverse layer positions",
+				"identifier": "reversePositions",
+				"shortcut": "cmd ctrl alt p",
+				"script": "ReversePositions.js",
+				"handler": "run"
+			},
+			{
+				"name": "Reverse layer order",
+				"identifier": "reverseLayerOrder",
+				"shortcut": "cmd ctrl alt o",
+				"script": "ReverseLayerOrder.js",
+				"handler": "run"
+			}
+	],
+
+	"menu": [
+		{
+			"title": "Layer organizer",
+			"items": ["sortLayers", "reversePositions", "reverseLayerOrder"]
+		}
+	]
+}

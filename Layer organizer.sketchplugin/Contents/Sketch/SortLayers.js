@@ -185,38 +185,39 @@ function sortLayers (_selection) {
 	}
 }
 
-// Run
-if (selection.count() > 1) {
 
-    // remember the selection
-    _selection = selection;
+function run(context) {
+	if (selection.count() > 1) {
 
-    // sort selected layers
-    sortLayers(selection);
-} else if (selection.count() == 1 && selection[0].children().count() > 0){
+	    // remember the selection
+	    _selection = selection;
 
-    // remember the selection
-    _selection = selection;
+	    // sort selected layers
+	    sortLayers(selection);
+	} else if (selection.count() == 1 && selection[0].children().count() > 0){
 
-    var group = _selection[0];
+	    // remember the selection
+	    _selection = selection;
 
-    // sort selected group
-    sortLayers(group.layers().array());
-} else {
-    [doc showMessage:"Cannot sort single layers."]
+	    var group = _selection[0];
+
+	    // sort selected group
+	    sortLayers(group.layers().array());
+	} else {
+	    [doc showMessage:"Cannot sort single layers."]
+	}
+
+	var layersMetaArray = [];
+
+	for (var i = 0; i < layersMeta.length; i++) {
+	    layersMetaArray.push(layersMeta[i].layer);
+	}
+
+	inventory.layers.sortIndices(layersMetaArray);
+
+	// Restore selection
+	inventory.layers.select(_selection);
 }
-
-var layersMetaArray = [];
-
-for (var i = 0; i < layersMeta.length; i++) {
-    layersMetaArray.push(layersMeta[i].layer);
-}
-
-inventory.layers.sortIndices(layersMetaArray);
-
-// Restore selection
-inventory.layers.select(_selection);
-
 
 // Sorts text layer strings in a ascending order
 
